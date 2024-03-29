@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         if (response.ok) {
             sources = await response.json();
             // Создание строк
+            sourcesTableBody.innerHTML = ""
             for (let i = 0; i < sources.length; i++) {
                 await createSourceRow(sources[i])
             }
@@ -69,7 +70,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         col4.appendChild(recordsLink);
         row.appendChild(col4);
 
-        sourcesTableBody.innerHTML = ""
         sourcesTableBody.appendChild(row);
     }
 

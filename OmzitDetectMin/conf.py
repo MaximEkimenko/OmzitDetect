@@ -10,8 +10,7 @@ DATA_PATH = BASEDIR / "data"
 
 os.makedirs(DATA_PATH, exist_ok=True)
 
-SERVER_HOSTNAME = "APM-0314"
-CENTRAL_SERVER_URL = 'http://APM-0314:8000'
+CENTRAL_SERVER_URL = 'http://192.168.8.30:8080'
 
 DETECT_PG_DB = {
     "drivername": "postgresql+psycopg2",
@@ -50,7 +49,7 @@ os.makedirs(logs_path, exist_ok=True)
 
 LOGGING_CONFIG = {
     "version": 1,
-    "disable_existing_loggers": False,
+    "disable_existing_loggers": True,
     "formatters": {
         "console": {
             "()": "colorlog.ColoredFormatter",

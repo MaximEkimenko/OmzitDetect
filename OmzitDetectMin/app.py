@@ -8,7 +8,7 @@ import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from conf import CENTRAL_SERVER_URL, SOURCES, SERVER_HOSTNAME, SETTINGS_PATH
+from conf import CENTRAL_SERVER_URL, SOURCES, SETTINGS_PATH
 from fastapi import FastAPI, UploadFile
 from starlette.responses import StreamingResponse, Response, FileResponse
 
@@ -19,11 +19,9 @@ from utils.process_manager import run_sources, stop_sources, run_i_started
 app_min = FastAPI(title=f'ODM {socket.gethostname()}')
 
 origins = [
-    "http://127.0.0.1:8000",
-    "http://localhost:8000",
-    "http://localhost",
+    "http://127.0.0.1:8080",
+    "http://localhost:8080",
     CENTRAL_SERVER_URL,
-    f"http://{socket.gethostbyname(SERVER_HOSTNAME)}:8000",
 ]
 
 app_min.add_middleware(

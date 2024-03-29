@@ -6,13 +6,15 @@ let formIntervals = document.getElementById('intervalsInput');
 let merged_time_intervals = ''
 
 document.getElementById("addInterval").onclick = function() {
-   console.log(merged_intervals)
-   let interval = []
-   interval.push(convertTimeToMinutes(start.value))
-   interval.push(convertTimeToMinutes(end.value))
-   merged_intervals.push(interval)
-   merged_intervals = merge(merged_intervals)
-   intervalsToTimeLine(merged_intervals)
+   if (start.value && end.value) {
+       console.log(merged_intervals)
+       let interval = []
+       interval.push(convertTimeToMinutes(start.value))
+       interval.push(convertTimeToMinutes(end.value))
+       merged_intervals.push(interval)
+       merged_intervals = merge(merged_intervals)
+       intervalsToTimeLine(merged_intervals)
+   }
 };
 
 document.addEventListener('click', handleClick)

@@ -11,17 +11,33 @@ document.addEventListener("DOMContentLoaded", (event) => {
         let response = await fetch(getExcelUrl)
         if (response.ok) {
             let blob = await response.blob()
-            const handle = await showSaveFilePicker({
+            const downloadFile = (blob, fileName) => {
+              const link = document.createElement('a');
+              // create a blobURI pointing to our Blob
+              link.href = URL.createObjectURL(blob);
+              link.download = fileName;
+              // some browser needs the anchor to be in the doc
+              document.body.append(link);
+              link.click();
+              link.remove();
+              // in case the Blob uses a lot of memory
+              setTimeout(() => URL.revokeObjectURL(link.href), 7000);
+            };
+            downloadFile(blob, `${source}.xlsx`);
+        }
+    }
+
+
+
+    async function getNewFileHandle() {
+      const opts = {
                     suggestedName: `${source}.xlsx`,
                     types: [{
                         description: 'Excel File',
                         accept: {'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx']},
                     }],
-            });
-            const writableStream = await handle.createWritable();
-            await writableStream.write(blob);
-            await writableStream.close();
-        }
+            };
+      return await window.showSaveFilePicker(opts);
     }
 
     async function getSourceData () {

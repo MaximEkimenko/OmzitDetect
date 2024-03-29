@@ -1,8 +1,11 @@
 import json
+import os
 from multiprocessing import Queue, Process
 from typing import Generator
 
 from utils.recognizer import InsightFace
+
+from utils.image_tools import convert_image_to_bytes
 from conf import SETTINGS_PATH
 import logging
 
@@ -35,7 +38,11 @@ def frame_generator(frame_queue: Queue) -> Generator:
     :return: Генератор кадров
     """
     while True:
-        yield frame_queue.get()
+        try:
+            yield frame_queue.get()
+        except Exception as ex:
+            logger.exception(ex)
+            yield
 
 
 def start_source_process(parameters: dict) -> Queue:

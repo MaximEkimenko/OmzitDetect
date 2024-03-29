@@ -68,7 +68,7 @@ def get_source_records_xlsx(source: str) -> list:
                     record.id,
                     record.name,
                     record.datetime.strftime("%d.%m.%Y %H:%M:%S"),
-                    f'http://{socket.gethostname()}:8000/show_photo/{record.id}/',
+                    f'=HYPERLINK("http://{socket.gethostname()}:8000/show_photo/{record.id}/")',
                     record.source,
                 ]
             )
