@@ -30,8 +30,8 @@ DETECT_PG_DB = {
     "drivername": "postgresql+psycopg2",
     'host': "localhost",
     'database': "detect",
-    'username': "postgres",
-    'password': "Valm0nts89"
+    'username': "admin",
+    'password': "Epass1"
 }
 
 

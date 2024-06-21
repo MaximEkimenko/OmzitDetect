@@ -10,7 +10,9 @@ DATA_PATH = BASEDIR / "data"
 
 os.makedirs(DATA_PATH, exist_ok=True)
 
-CENTRAL_SERVER_URL = 'http://192.168.8.30:8080'
+# CENTRAL_SERVER_URL = 'http://192.168.8.30:8080'
+# CENTRAL_SERVER_URL = 'http://192.168.8.30:850'
+CENTRAL_SERVER_URL = 'http://192.168.8.163:850'
 
 DETECT_PG_DB = {
     "drivername": "postgresql+psycopg2",
@@ -19,6 +21,9 @@ DETECT_PG_DB = {
     'username': "postgres",
     'password': "Epass1"
 }
+
+
+'rtsp://admin01:Epass1@192.168.9.15:554'
 
 SOURCES = [
     {

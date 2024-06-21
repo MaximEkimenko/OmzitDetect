@@ -43,7 +43,8 @@ def create(model, **kwargs) -> None:
 
 def get_source_records(source: str) -> list:
     with Session(autoflush=False, bind=engine) as db:
-        records = db.query(Detection).filter(Detection.source == source)
+        # records = db.query(Detection).filter(Detection.source == source)  # Отбор по имени источника
+        records = db.query(Detection).all()  # Выбор записей со всех источников
         results = []
         for record in records:
             results.append(
@@ -79,3 +80,5 @@ def get_photo(record_id: int):
     with Session(autoflush=False, bind=engine) as db:
         photo = db.query(Detection.photo).filter(Detection.id == record_id).first()
         return photo
+
+
